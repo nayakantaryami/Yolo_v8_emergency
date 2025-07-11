@@ -1,6 +1,6 @@
-# 🚑 YOLO v8 Emergency Vehicle Detection
+# 🚑 YOLO v8 Emergency Vehicle Detection - Ambulance vs Non-Ambulance Binary Classification
 
-This repository contains a complete implementation of YOLO v8 for detecting ambulances and emergency vehicles using a custom dataset.
+This repository contains a complete implementation of YOLO v8 for binary classification of ambulances vs non-ambulances using a custom dataset.
 
 ## 📋 Dataset Information
 
@@ -10,7 +10,7 @@ The dataset contains **492 images** in total:
 - **Test**: 49 images
 
 **Classes**:
-- `0`: Emergency Vehicle
+- `0`: Non-Ambulance (Emergency vehicles that are not ambulances)
 - `1`: Ambulance
 
 The dataset is already annotated in YOLO format with normalized bounding box coordinates.
@@ -31,9 +31,17 @@ Test the system with a quick demo:
 python demo.py
 ```
 
+### 3. Binary Classification Demo
+
+See detailed dataset statistics and test the ambulance vs non-ambulance classification:
+
+```bash
+python demo_binary_classification.py
+```
+
 ### 3. Train Custom Model
 
-Train YOLO v8 on the ambulance dataset:
+Train YOLO v8 on the ambulance vs non-ambulance dataset:
 
 ```bash
 python train.py
@@ -41,7 +49,7 @@ python train.py
 
 ### 4. Run Inference
 
-Detect ambulances in images:
+Detect ambulances vs non-ambulances in images:
 
 ```bash
 # On test images
@@ -191,10 +199,8 @@ results = model.train(
 
 ```yaml
 names:
-  0: emergency_vehicle
-  1: ambulance
-  2: fire_truck        # New class
-  3: police_car        # New class
+  0: non-ambulance     # Emergency vehicles that are not ambulances
+  1: ambulance         # Ambulances
 ```
 
 ## 🚨 Troubleshooting
