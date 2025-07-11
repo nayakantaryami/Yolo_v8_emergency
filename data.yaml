@@ -5,5 +5,5 @@ test: test/images   # test images (optional)
 
 # Classes
 names:
-  0: emergency_vehicle
+  0: non-ambulance
   1: ambulance

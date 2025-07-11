@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-YOLO v8 Training Script for Ambulance Detection
-This script trains a YOLOv8 model on the custom ambulance dataset.
+YOLO v8 Training Script for Ambulance vs Non-Ambulance Detection
+This script trains a YOLOv8 model on the custom dataset for binary classification:
+- Class 0: non-ambulance (emergency vehicles that are not ambulances)
+- Class 1: ambulance
 """
 
 import os
@@ -9,7 +11,7 @@ from ultralytics import YOLO
 
 def train_yolo_v8():
     """
-    Train YOLOv8 model on the ambulance dataset
+    Train YOLOv8 model for ambulance vs non-ambulance binary classification
     """
     # Load a pretrained YOLOv8 model
     model = YOLO('yolov8n.pt')  # Load YOLOv8 nano model for faster training
@@ -17,7 +19,7 @@ def train_yolo_v8():
     # Train the model
     results = model.train(
         data='data.yaml',          # path to dataset YAML
-        epochs=100,                # number of training epochs
+        epochs=50,                # number of training epochs
         imgsz=640,                 # training image size
         batch=16,                  # batch size
         device='cpu',              # training device ('cpu' or 'cuda')

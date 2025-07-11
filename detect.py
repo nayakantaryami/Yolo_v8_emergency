@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
-YOLO v8 Inference Script for Ambulance Detection
-This script performs inference using a trained YOLOv8 model to detect ambulances in images.
+YOLO v8 Inference Script for Ambulance vs Non-Ambulance Detection
+This script performs inference using a trained YOLOv8 model to detect ambulances vs non-ambulances in images.
+Binary classification:
+- Class 0: non-ambulance (emergency vehicles that are not ambulances)
+- Class 1: ambulance
 """
 
 import os
@@ -13,7 +16,7 @@ import cv2
 
 def detect_ambulances(model_path, source, save_dir="runs/detect", conf_threshold=0.25):
     """
-    Detect ambulances in images or video using trained YOLOv8 model
+    Detect ambulances vs non-ambulances in images or video using trained YOLOv8 model
     
     Args:
         model_path (str): Path to the trained model
@@ -51,7 +54,7 @@ def detect_ambulances(model_path, source, save_dir="runs/detect", conf_threshold
 
 def detect_from_webcam(model_path, conf_threshold=0.25):
     """
-    Real-time ambulance detection from webcam
+    Real-time ambulance vs non-ambulance detection from webcam
     
     Args:
         model_path (str): Path to the trained model
@@ -92,7 +95,7 @@ def detect_from_webcam(model_path, conf_threshold=0.25):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='YOLOv8 Ambulance Detection Inference')
+    parser = argparse.ArgumentParser(description='YOLOv8 Ambulance vs Non-Ambulance Detection Inference')
     parser.add_argument('--model', type=str, default='runs/train/ambulance_detection/weights/best.pt',
                         help='Path to trained model')
     parser.add_argument('--source', type=str, default='database/test/images',
